@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include<stdlib.h>
+void enqueue();
+void dequeue();
+void display();
+struct node{
+    int data;
+    struct node *next;
+};
+struct node *front=NULL,*rear=NULL,*newnode,*p,*q;
+int main()
+{
+    int ch;
+    while(1){
+        printf("1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+        printf("Enter your choice:");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1:enqueue();
+            break;
+            case 2:dequeue();
+            break;
+            case 3:display();
+            break;
+            case 4:exit(0);
+            break;
+            default:printf("Invalid choice\n");
+        }
+    }
+}
+void enqueue(){
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("Enter the data:");
+    scanf("%d",&newnode->data);
+    newnode->next=NULL;
+    if(front==NULL){
+        front=rear=newnode;
+    }
+    else{
+        rear->next=newnode;
+        rear=newnode;
+    }
+}
+void dequeue(){
+    if(front==NULL){
+        printf("Queue is empty\n");
+    }
+    else{
+        p=front;
+        front=front->next;
+        free(p);
+    }
+}
+void display(){
+    if(front==NULL){
+        printf("Queue is empty\n");
+    }
+    else{
+        p=front;
+        while(p!=NULL){
+            printf("%d-->",p->data);
+            p=p->next;
+        }
+        printf("NULL\n");
+    }
+}
