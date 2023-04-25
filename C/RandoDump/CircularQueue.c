@@ -6,7 +6,7 @@ void enqueue(){
     if((rear +1) %size == front ){
         printf("FULL");
     }
-    else if(front==1 && rear==-1){
+    else if(front== -1 && rear== -1){
         int data;
         scanf("%d",&data);
         front=rear=0;
