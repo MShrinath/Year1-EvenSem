@@ -24,10 +24,11 @@ void dequeue(){
     if(front==-1){
         printf("EMPTY");
     }
+    else if(front == rear){
+        front=rear=-1;
+    }
     else{
         front=(front+1) % size;
-        if(front>rear)
-            front=rear=-1;
     }
 }
 
